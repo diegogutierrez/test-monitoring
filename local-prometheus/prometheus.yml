@@ -1,0 +1,14 @@
+# my global config
+global:
+  scrape_interval:     5s
+  evaluation_interval: 3s
+  # scrape_timeout is set to the global default (10s).
+
+scrape_configs:
+  - job_name: local-prometheus
+    # metrics_path defaults to '/metrics'
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          # put the IP address, so this container can access the service
+          - 192.168.0.12:8081
